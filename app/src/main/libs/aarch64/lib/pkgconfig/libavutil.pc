@@ -1,0 +1,14 @@
+prefix=./Android/aarch64
+exec_prefix=${prefix}
+libdir=./Android/aarch64/lib
+includedir=./Android/aarch64/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 56.31.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil 
+Libs.private: -pthread -lm
+Cflags: -I${includedir}

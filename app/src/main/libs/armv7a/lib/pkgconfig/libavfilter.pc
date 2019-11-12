@@ -1,0 +1,14 @@
+prefix=./Android/armv7a
+exec_prefix=${prefix}
+libdir=./Android/armv7a/lib
+includedir=./Android/armv7a/include
+
+Name: libavfilter
+Description: FFmpeg audio/video filtering library
+Version: 7.57.100
+Requires: 
+Requires.private: libavutil >= 56.31.100
+Conflicts:
+Libs: -L${libdir}  -lavfilter 
+Libs.private: -pthread -lm
+Cflags: -I${includedir}
