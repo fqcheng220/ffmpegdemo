@@ -62,12 +62,26 @@ public class MainActivity extends AppCompatActivity {
     public native void stream(String inputUrl,String outputUrl);
 
     static{
-        System.loadLibrary("libavcodec.so");
-        System.loadLibrary("libavdevice.so");
-        System.loadLibrary("libavfilter.so");
-        System.loadLibrary("libavformat.so");
-        System.loadLibrary("libavutil.so");
-        System.loadLibrary("libswresample.so");
-        System.loadLibrary("libswscale.so");
+//        System.loadLibrary("avcodec");
+//        System.loadLibrary("avdevice");
+////        System.loadLibrary("avfilter");
+////        System.loadLibrary("avformat");
+////        System.loadLibrary("avutil");
+////        System.loadLibrary("swresample");
+////        System.loadLibrary("swscale");
+////        System.loadLibrary("postproc");
+//
+//        System.loadLibrary("ffstreamer");
+
+
+        System.loadLibrary("avutil");
+        System.loadLibrary("swresample");
+        System.loadLibrary("avcodec");
+        System.loadLibrary("avformat");
+        System.loadLibrary("swscale");
+        System.loadLibrary("postproc");
+        System.loadLibrary("avfilter");
+        System.loadLibrary("avdevice");
+        System.loadLibrary("sffstreamer");
     }
 }

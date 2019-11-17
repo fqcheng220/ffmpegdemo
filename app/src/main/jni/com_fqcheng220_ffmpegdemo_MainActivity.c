@@ -2,7 +2,8 @@
 // Created by Administrator on 2019/11/12 0012.
 //
 
-#include <studio.h>
+#include "com_fqcheng220_ffmpegdemo_MainActivity.h"
+//#include <studio.h>
 
 #include "libavcodec/avcodec.h"
 #include "libavformat/avformat.h"
@@ -16,6 +17,7 @@
 
 JNIEXPORT void JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
   (JNIEnv * env, jobject jobject, jstring input_jstr, jstring output_jstr){
+  AVOutputFormat *ofmt = NULL;
   AVFormatContext *ifmt_ctx = NULL, *ofmt_ctx = NULL;
 
   int ret;
@@ -44,3 +46,4 @@ JNIEXPORT void JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
         	avformat_free_context(ofmt_ctx);
 
   }
+  #endif
