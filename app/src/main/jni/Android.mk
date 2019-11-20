@@ -11,12 +11,6 @@ LOCAL_MODULE := avformat
 LOCAL_SRC_FILES := libavformat.so
 include $(PREBUILT_SHARED_LIBRARY)
 
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := avfilter
-LOCAL_SRC_FILES := libavfilter.so
-include $(PREBUILT_SHARED_LIBRARY)
-
 include $(CLEAR_VARS)
 LOCAL_MODULE := avutil
 LOCAL_SRC_FILES := libavutil.so
@@ -49,5 +43,5 @@ LOCAL_MODULE := ffstreamer
 LOCAL_SRC_FILES :=com_fqcheng220_ffmpegdemo_MainActivity.c
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/include
 LOCAL_LDLIBS := -llog -lz
-LOCAL_SHARED_LIBRARIES := avcodec avformat avfilter avutil swresample swscale postproc avdevice
+LOCAL_SHARED_LIBRARIES := avcodec avformat avutil swresample swscale postproc avdevice
 include $(BUILD_SHARED_LIBRARY)

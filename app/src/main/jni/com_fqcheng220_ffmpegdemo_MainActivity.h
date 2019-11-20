@@ -10,9 +10,9 @@ extern "C" {
 /*
  * Class:     com_fqcheng220_ffmpegdemo_MainActivity
  * Method:    stream
- * Signature: (Ljava/lang/String;Ljava/lang/String;)V
+ * Signature: (Ljava/lang/String;Ljava/lang/String;)I
  */
-JNIEXPORT void JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
+JNIEXPORT jint JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
   (JNIEnv *, jobject, jstring, jstring);
 
 #ifdef __cplusplus

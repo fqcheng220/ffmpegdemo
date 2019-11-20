@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stream(""/*"/storage/sdcard0/test.mp4"*/,"");
+                testNativeMethod1("test1","test2");
             }
         });
     }
@@ -59,29 +59,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public native int stream(String inputUrl,String outputUrl);
+    public native void testNativeMethod1(String inputUrl,String outputUrl);
 
     static{
-//        System.loadLibrary("avcodec");
-//        System.loadLibrary("avdevice");
-////        System.loadLibrary("avfilter");
-////        System.loadLibrary("avformat");
-////        System.loadLibrary("avutil");
-////        System.loadLibrary("swresample");
-////        System.loadLibrary("swscale");
-////        System.loadLibrary("postproc");
-//
-//        System.loadLibrary("ffstreamer");
-
-
-        //System.loadLibrary("avutil");
-        //System.loadLibrary("swresample");
-        //System.loadLibrary("avcodec");
-        //System.loadLibrary("avformat");
-        //System.loadLibrary("swscale");
-        //System.loadLibrary("postproc");
-        ////System.loadLibrary("avfilter");
-        //System.loadLibrary("avdevice");
-        System.loadLibrary("ffstreamer");
+        System.loadLibrary("testJni");
     }
 }
