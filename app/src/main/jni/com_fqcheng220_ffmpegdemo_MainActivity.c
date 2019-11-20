@@ -3,7 +3,7 @@
 //
 
 #include "com_fqcheng220_ffmpegdemo_MainActivity.h"
-//#include <studio.h>
+#include <stdio.h>
 
 #include "libavcodec/avcodec.h"
 #include "libavformat/avformat.h"
@@ -26,6 +26,22 @@
 //#define LOGI(format, ...)  printf("(^_^) " format "\n", ##__VA_ARGS__)
 //#endif
 
+
+//Output FFmpeg's av_log()
+void custom_log(void *ptr, int level, const char* fmt, va_list vl){
+
+	//To TXT file
+	FILE *fp=fopen("/storage/sdcard0/av_log.txt","a+");
+	if(fp){
+		vfprintf(fp,fmt,vl);
+		fflush(fp);
+		fclose(fp);
+	}
+
+	//To Logcat
+	//LOGE(fmt, vl);
+}
+
 JNIEXPORT jint JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
   (JNIEnv * env, jobject jobject, jstring input_jstr, jstring output_jstr){
   AVOutputFormat *ofmt = NULL;
@@ -37,6 +53,13 @@ JNIEXPORT jint JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
   	char output_str[500]={0};
   	sprintf(input_str,"%s",(*env)->GetStringUTFChars(env,input_jstr, NULL));
   	sprintf(output_str,"%s",(*env)->GetStringUTFChars(env,output_jstr, NULL));
+
+//input_str  = "cuc_ieschool.flv";
+	//output_str = "rtmp://localhost/publishlive/livestream";
+	//output_str = "rtp://233.233.233.233:6666";
+
+	//FFmpeg av_log() callback
+	av_log_set_callback(custom_log);
 
   av_register_all();
   	//Network
