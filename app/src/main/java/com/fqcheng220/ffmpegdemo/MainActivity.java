@@ -3,6 +3,7 @@ package com.fqcheng220.ffmpegdemo;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stream("/storage/sdcard0/test.mp4","");
+                stream(Environment.getExternalStorageDirectory().getPath()+"/test.mp4","");
             }
         });
         verifyStoragePermissions(this);
