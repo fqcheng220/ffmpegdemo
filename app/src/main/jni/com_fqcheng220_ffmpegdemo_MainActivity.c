@@ -62,10 +62,12 @@ JNIEXPORT jint JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
 	av_log_set_callback(custom_log);
 
   av_register_all();
+  //Register Device
+      avdevice_register_all();
   	//Network
   	avformat_network_init();
   	//Input
-    	if ((ret = avformat_open_input(&ifmt_ctx, input_str, 0, 0)) < 0) {
+    	if ((ret = avformat_open_input(&ifmt_ctx, input_str, NULL, NULL)) < 0) {
     		LOGE( "Could not open input file. input_str=%s,ret=%d,ret=%s",input_str,ret,av_err2str(ret));
     		goto end;
     	}

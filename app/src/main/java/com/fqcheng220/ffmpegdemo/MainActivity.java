@@ -1,8 +1,11 @@
 package com.fqcheng220.ffmpegdemo;
 
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -32,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stream(""/*"/storage/sdcard0/test.mp4"*/,"");
+                stream("/storage/sdcard0/test.mp4","");
             }
         });
+        verifyStoragePermissions(this);
     }
 
     @Override
@@ -76,12 +80,34 @@ public class MainActivity extends AppCompatActivity {
 
         //System.loadLibrary("avutil");
         //System.loadLibrary("swresample");
-        //System.loadLibrary("avcodec");
-        //System.loadLibrary("avformat");
         //System.loadLibrary("swscale");
         //System.loadLibrary("postproc");
-        ////System.loadLibrary("avfilter");
         //System.loadLibrary("avdevice");
+        //System.loadLibrary("avcodec");
+        //System.loadLibrary("avformat");
+        //System.loadLibrary("avfilter");
         System.loadLibrary("ffstreamer");
+    }
+
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE" };
+
+
+    public static void verifyStoragePermissions(Activity activity) {
+
+        try {
+            //检测是否有写的权限
+            int permission = ActivityCompat.checkSelfPermission(activity,
+                "android.permission.WRITE_EXTERNAL_STORAGE");
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                // 没有写的权限，去申请写的权限，会弹出对话框
+                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE,REQUEST_EXTERNAL_STORAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
