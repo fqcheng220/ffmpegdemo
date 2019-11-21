@@ -116,7 +116,7 @@ JNIEXPORT jint JNICALL Java_com_fqcheng220_ffmpegdemo_MainActivity_stream
     	if (!(ofmt->flags & AVFMT_NOFILE)) {
     		ret = avio_open(&ofmt_ctx->pb, output_str, AVIO_FLAG_WRITE);
     		if (ret < 0) {
-    			LOGE( "Could not open output URL '%s'", output_str);
+    			LOGE( "Could not open output URL '%s' ret='%s'", output_str,av_err2str(ret));
     			goto end;
     		}
     	}

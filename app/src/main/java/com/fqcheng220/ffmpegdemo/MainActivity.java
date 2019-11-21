@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stream(Environment.getExternalStorageDirectory().getPath()+"/test.mp4","");
+                stream(Environment.getExternalStorageDirectory().getPath()+"/test.mp4","rtmp://www.velab.com.cn/live/test");
             }
         });
         verifyStoragePermissions(this);
