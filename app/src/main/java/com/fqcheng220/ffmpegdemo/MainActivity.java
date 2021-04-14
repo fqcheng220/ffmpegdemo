@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView = findViewById(R.id.test);
+        TextView textView = (TextView)findViewById(R.id.test);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stream(Environment.getExternalStorageDirectory().getPath()+"/test.mp4","rtmp://www.velab.com.cn/live/test");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stream(Environment.getExternalStorageDirectory().getPath()+"/long.mp4",
+                                "rtmp" +
+                                "://172.30.66.58:1935" +
+                                "/live/test");
+                    }
+                }).start();
             }
         });
         verifyStoragePermissions(this);

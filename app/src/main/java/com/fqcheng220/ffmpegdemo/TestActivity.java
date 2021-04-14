@@ -16,10 +16,10 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,7 +28,7 @@ public class TestActivity extends AppCompatActivity {
             }
         });
 
-        TextView textView = findViewById(R.id.test);
+        TextView textView = (TextView)findViewById(R.id.test);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
